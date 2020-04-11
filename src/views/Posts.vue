@@ -1,26 +1,47 @@
 <template>
-<div class="chat">
-  <section>
-    <div class="my_chat">
-      <input v-model="my_name" type="text" placeholder="Your Name">
-      <input v-model="my_nationality" type="text" placeholder="Your Nationality">
-      <input v-model="my_pray" type="text" placeholder="Your Pray">
-      <button @click="mySend">送信する</button>
-    </div>
-  </section>
-  <section>
-    <div class="chat_list">
-      <div v-for="m in form" :key="m.key">
-        <div :class="m.style">{{m.name}}</div>
+<div>
+  <h2>Pray Posts</h2>
+  <b-form>
+    <b-form-group id="name">
+      <b-form-input
+        id="input-name"
+        v-model="my_name"
+        type="text"
+        required
+        placeholder="Your Name"
+      ></b-form-input>
+    </b-form-group>
+
+    <b-form-group id="nationality">
+      <b-form-input
+        id="input-nationality"
+        v-model="my_nationality"
+        type="text"
+        required
+        placeholder="Your Nationality"
+      ></b-form-input>
+    </b-form-group>
+
+    <b-form-group id="pray">
+      <b-form-input
+        id="input-pray"
+        v-model="my_pray"
+        type="text"
+        required
+        placeholder="Your Pray"
+      ></b-form-input>
+    </b-form-group>
+
+    <b-button @click="mySend" type="submit" variant="primary">Submit</b-button>
+
+  </b-form>
+    <section>
+      <div class="chat-list">
+        <div v-for="m in form" :key="m.key">
+          <div class="color"> {{ m.name }} {{ m.nationality }} {{ m.pray }} </div>
+        </div>
       </div>
-      <div v-for="m in form" :key="m.key">
-        <div :class="m.style"> {{m.nationality}}</div>
-      </div>
-      <div v-for="m in form" :key="m.key">
-        <div :class="m.style">{{m.pray}}</div>
-      </div>
-    </div>
-  </section>
+    </section>
 </div>
 </template>
 
@@ -45,7 +66,6 @@ export default {
     mySend () {
       this.form.push({
         id: 1,
-        style: 'my',
         name: this.my_name,
         nationality: this.my_nationality,
         pray: this.my_pray
@@ -59,12 +79,10 @@ export default {
 </script>
 
 <style scoped>
-.my{
+.color{
     color: #888888;
 }
-</style>
 
-<!-- /* <style scoped>
 h2 {
   text-align: center;
   padding-top: 50px;
@@ -73,13 +91,19 @@ h2 {
   font-weight: 100;
 }
 
+form {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
 .button {
   font-weight: bold;
   margin-top: 80px;
   width: 70%;
 }
 
-#input-group-1 {
+.name {
   font-weight: bold;
   text-align: left;
   padding: 10px;
@@ -87,7 +111,7 @@ h2 {
   display: inline-block;
 }
 
-#input-group-2 {
+.nationality {
   display: inline-block;
   font-weight: bold;
   padding: 10px;
@@ -95,11 +119,16 @@ h2 {
   width: 30%;
 }
 
-#input-group-3 {
+.pray {
   font-weight: bold;
   text-align: left;
   padding-top: 10px;
   margin: 0 auto;
   width: 60%;
 }
-</style> */ -->
+
+.chat-list {
+  margin-top: 100px;
+
+}
+</style>
