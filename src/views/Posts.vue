@@ -7,6 +7,7 @@
         id="input-name"
         v-model="my_name"
         type="text"
+        maxlength='20'
         required
         placeholder="Your Name"
       ></b-form-input>
@@ -17,6 +18,7 @@
         id="input-nationality"
         v-model="my_nationality"
         type="text"
+        maxlength='15'
         required
         placeholder="Your Nationality"
       ></b-form-input>
@@ -27,6 +29,7 @@
         id="input-pray"
         v-model="my_pray"
         type="text"
+        maxlength='120'
         required
         placeholder="Your Pray"
       ></b-form-input>
@@ -35,10 +38,11 @@
     <b-button @click="mySend" type="submit" variant="primary">Submit</b-button>
 
   </b-form>
-    <section>
+    <section class="chatroom">
       <div class="chat-list">
-        <div v-for="m in form" :key="m.key">
-          <div class="color"> {{ m.name }} {{ m.nationality }} {{ m.pray }} </div>
+        <div class="posts" v-for="m in form" :key="m.key">
+          <div class="post"> {{ m.name }} <br> {{ m.nationality }} </div>
+          <div class="post"> {{ m.pray }} </div>
         </div>
       </div>
     </section>
@@ -79,10 +83,6 @@ export default {
 </script>
 
 <style scoped>
-.color{
-    color: #888888;
-}
-
 h2 {
   text-align: center;
   padding-top: 50px;
@@ -127,8 +127,25 @@ form {
   width: 60%;
 }
 
+.chatroom {
+  background-color: rgb(226, 226, 226);
+  margin: 0 auto;
+  width: 80%;
+  height: 1000px;
+}
+
 .chat-list {
   margin-top: 100px;
+  text-align: left;
+  width: 100%;
+}
 
+.posts {
+  padding: 20px;
+  margin-top: -40px;
+}
+
+.post {
+  color: #888888;
 }
 </style>
