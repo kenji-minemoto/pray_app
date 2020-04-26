@@ -25,14 +25,17 @@
     </b-form-group>
 
     <b-form-group id="pray">
-      <b-form-input
+      <b-form-textarea
         id="input-pray"
         v-model="my_pray"
         type="text"
-        maxlength='120'
+        cols="20"
+        wrap="hard"
+        rows="2"
+        max-rows="3"
         required
         placeholder="Your Pray"
-      ></b-form-input>
+      ></b-form-textarea>
     </b-form-group>
 
     <b-button @click="mySend" type="submit" variant="primary">Submit</b-button>
@@ -92,39 +95,38 @@ h2 {
 }
 
 form {
-  width: 80%;
   margin: 0 auto;
   padding-top: 10px;
 }
 
-.button {
+button {
   font-weight: bold;
-  margin-top: 80px;
+  margin-top: 30px;
   width: 70%;
 }
 
-.name {
+#name {
   font-weight: bold;
   text-align: left;
   padding: 10px;
-  width: 30%;
+  width: 40%;
   display: inline-block;
 }
 
-.nationality {
+#nationality {
   display: inline-block;
   font-weight: bold;
   padding: 10px;
   text-align: left;
-  width: 30%;
+  width: 40%;
 }
 
-.pray {
+#pray {
   font-weight: bold;
   text-align: left;
   padding-top: 10px;
   margin: 0 auto;
-  width: 60%;
+  width: 75%
 }
 
 .chatroom {
